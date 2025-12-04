@@ -13,3 +13,7 @@ from PIL import Image
 
 # ---------- Resizing ----------
 #convert an image to a resized image
+def resize_opencv(image: np.ndarray,
+                  width: int,
+                  height: int) -> np.ndarray:
+    return cv2.resize(image, (width, height))
