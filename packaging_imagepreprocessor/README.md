@@ -1,0 +1,2 @@
+# Module library for Image Preprocessor 
+    Packaging for preprocessing of image. using the basic tools that has been provided by our lecture in open source practice and artificial inteligence such as pyproject.toml and MIT licence. For further information please refer to this link https://github.com/haikalfiqri/ImgPreprocessor_lib.
