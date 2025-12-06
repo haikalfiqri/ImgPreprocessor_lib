@@ -1,0 +1,22 @@
+[project]
+name = "ImgPreprocessor_lib_haikalfiqri"
+version = "0.1.4"
+authors = [
+  { name="haikalfiqri", email="haikalfiqri@hanyang.ac.kr" },
+]
+description = "Library packaging for Image Preprocessor version2"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/haikalfiqri/ImgPreprocessor_lib" 
+Issues = "https://github.com/haikalfiqri/ImgPreprocessor_lib/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
