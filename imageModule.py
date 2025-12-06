@@ -19,6 +19,14 @@ def convert_color(image: np.ndarray, mode: str = "rgb") -> np.ndarray:
         return cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
     raise ValueError(f"Unsupported mode: {mode}")
 
+def resize_for_display(image: np.ndarray,
+                       max_width: int = 800,
+                       max_height: int = 600) -> np.ndarray:
+    """Resize image to fit in a box while keeping aspect ratio."""
+    h, w = image.shape[:2]
+    scale = min(max_width / w, max_height / h, 1.0)
+    new_size = (int(w * scale), int(h * scale))
+
 
 # ---------- Noise reduction ----------
 #convert a noisy image to a denoised image
