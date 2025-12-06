@@ -5,6 +5,9 @@ from imageModule import (
     convert_color,
     denoise_gaussian,
     denoise_median,
+    denoise_bilateral,
+    resize_opencv,
+    resize_pillow
 )
 
 
@@ -72,6 +75,40 @@ class TestDenoiseMedian(unittest.TestCase):
         blurred = denoise_median(test_image, ksize=5)
         
         self.assertEqual(blurred.shape, test_image.shape)
+
+class TestDenoiseBilateral(unittest.TestCase):
+    
+    def test_bilateral_filter_returns_same_shape(self):
+        """Test that bilateral filter maintains image dimensions."""
+        test_image = np.random.randint(0, 255, (100, 100, 3), dtype=np.uint8)
+        
+        filtered = denoise_bilateral(test_image, d=9, sigma_color=75, sigma_space=75)
+        
+        self.assertEqual(filtered.shape, test_image.shape)
+    
+
+
+class TestResizeOpenCV(unittest.TestCase):
+    
+    def test_resize_to_specific_dimensions(self):
+        """Test that OpenCV resize produces exact dimensions."""
+        test_image = np.ones((200, 300, 3), dtype=np.uint8)
+        
+        resized = resize_opencv(test_image, width=100, height=50)
+        
+        self.assertEqual(resized.shape, (50, 100, 3))
+
+
+class TestResizePillow(unittest.TestCase):
+    
+    def test_pillow_resize_to_specific_dimensions(self):
+        """Test that Pillow resize produces exact dimensions."""
+        pil_image = Image.new('RGB', (300, 200), color='red')
+        
+        resized = resize_pillow(pil_image, width=100, height=50)
+        
+        self.assertEqual(resized.size, (100, 50))
+
     
 
 if __name__ == '__main__':
