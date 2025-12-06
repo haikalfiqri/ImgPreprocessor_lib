@@ -20,5 +20,11 @@ def denoise_median(image: np.ndarray,
                    ksize: int = 11) -> np.ndarray:
     return cv2.medianBlur(image, ksize)
 
+def denoise_bilateral(image: np.ndarray,
+                      d: int = 15,
+                      sigma_color: int = 100,
+                      sigma_space: int = 100) -> np.ndarray:
+    return cv2.bilateralFilter(image, d, sigma_color, sigma_space)
+
 # ---------- Resizing ----------
 #convert an image to a resized image
